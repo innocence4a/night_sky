@@ -43,6 +43,8 @@ body {
   perspective: 1000px;
   width: 340px;
   height: 540px;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .card {

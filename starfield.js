@@ -43,6 +43,7 @@ const dispTitle  = document.getElementById('dispTitle');
 const hpVal      = document.getElementById('hpVal');
 const rarityLabel = document.getElementById('rarityLabel');
 const buttons    = document.querySelectorAll('.ctrl-btn');
+let isTouchActive = false;
 
 // ===== 役職切り替え =====
 function setType(typeKey) {
@@ -70,10 +71,10 @@ buttons.forEach(btn => {
 });
 
 // ===== 3D傾き & ホログラム =====
-wrapper.addEventListener('mousemove', e => {
+function updateTiltFromPoint(clientX, clientY) {
   const r    = wrapper.getBoundingClientRect();
-  const x    = e.clientX - r.left;
-  const y    = e.clientY - r.top;
+  const x    = clientX - r.left;
+  const y    = clientY - r.top;
   const rotY = ((x - r.width  / 2) / (r.width  / 2)) * 12;
   const rotX = -((y - r.height / 2) / (r.height / 2)) * 12;
 
@@ -94,12 +95,39 @@ wrapper.addEventListener('mousemove', e => {
   )`;
   holoShimmer.style.opacity = '1';
   holoShimmer.style.animation = 'none';
-});
+}
 
-wrapper.addEventListener('mouseleave', () => {
+function resetTilt() {
   card.style.transform = 'rotateY(0deg) rotateX(0deg)';
-  // CSSのデフォルトアニメーションに戻す
   holoShimmer.style.background  = '';
   holoShimmer.style.opacity     = '';
   holoShimmer.style.animation   = '';
+}
+
+function handlePointerMove(e) {
+  if (e.pointerType === 'touch' && !isTouchActive) return;
+  updateTiltFromPoint(e.clientX, e.clientY);
+}
+
+wrapper.addEventListener('pointerdown', e => {
+  if (e.pointerType === 'touch') {
+    isTouchActive = true;
+    e.preventDefault();
+  }
+  updateTiltFromPoint(e.clientX, e.clientY);
+});
+
+wrapper.addEventListener('pointermove', handlePointerMove);
+wrapper.addEventListener('pointerup', () => {
+  isTouchActive = false;
+  resetTilt();
+});
+wrapper.addEventListener('pointercancel', () => {
+  isTouchActive = false;
+  resetTilt();
+});
+wrapper.addEventListener('pointerleave', e => {
+  if (e.pointerType !== 'touch') {
+    resetTilt();
+  }
 });
