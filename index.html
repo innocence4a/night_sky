@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokepoke Business Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <canvas id="starfield"></canvas>
+
+  <div class="card-scene">
+    <div class="card-wrapper" id="cardWrapper">
+      <div class="card" id="card">
+        <div class="card-bg"></div>
+        <div class="holo-layer"></div>
+        <div class="holo-shimmer" id="holoShimmer"></div>
+        <div class="outer-frame"></div>
+        <div class="inner-frame"></div>
+        <div class="corner-gem tl"></div>
+        <div class="corner-gem tr"></div>
+        <div class="corner-gem bl"></div>
+        <div class="corner-gem br"></div>
+
+        <div class="card-header">
+          <span class="card-number">No.001</span>
+          <div class="type-badge" id="typeBadge">
+            <i class="ti ti-crown type-icon" id="typeIcon" aria-hidden="true"></i>
+            <span id="typeLabel">CEO</span>
+          </div>
+        </div>
+
+        <div class="card-image-area">
+          <div class="silhouette">
+            <div class="energy-ring"></div>
+            <div class="energy-ring-2"></div>
+            <span class="silhouette-initials">TR</span>
+          </div>
+          <div class="stars-row">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="name-section">
+          <div class="card-name">Taro</div>
+          <div class="card-title" id="dispTitle">Chief Executive Officer</div>
+          <div class="card-company">Example Corp.</div>
+        </div>
+
+        <div class="divider-line"></div>
+
+        <div class="contact-section">
+          <div class="contact-row">
+            <div class="contact-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+            <span class="contact-text">taro@example.com</span>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
+            <span class="contact-text">+81-90-0000-0000</span>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon"><i class="ti ti-brand-x" aria-hidden="true"></i></div>
+            <span class="contact-text">@taro</span>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon"><i class="ti ti-world" aria-hidden="true"></i></div>
+            <span class="contact-text">example.com</span>
+          </div>
+        </div>
+
+        <div class="bottom-bar">
+          <span class="rarity-badge" id="rarityLabel">&#9733;&#9733;&#9733; LEGENDARY</span>
+          <span class="hp-display">HP <span id="hpVal">999</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="ctrl-btn active" data-type="ceo"><i class="ti ti-crown" aria-hidden="true"></i> CEO</button>
+      <button class="ctrl-btn" data-type="cto"><i class="ti ti-settings" aria-hidden="true"></i> CTO</button>
+      <button class="ctrl-btn" data-type="engineer"><i class="ti ti-code" aria-hidden="true"></i> Engineer</button>
+      <button class="ctrl-btn" data-type="designer"><i class="ti ti-brush" aria-hidden="true"></i> Designer</button>
+      <button class="ctrl-btn" data-type="sales"><i class="ti ti-briefcase" aria-hidden="true"></i> Sales</button>
+      <button class="ctrl-btn" data-type="founder"><i class="ti ti-rocket" aria-hidden="true"></i> Founder</button>
+    </div>
+  </div>
+
+  <script src="starfield.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
